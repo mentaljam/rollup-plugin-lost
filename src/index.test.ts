@@ -41,7 +41,7 @@ rollup({
   const duration = (new Date().getTime() - start) + 'ms'
   // eslint-disable-next-line @typescript-eslint/unbound-method
   process.stderr.write = originalStderrWrite
-  if (!(/^Lost files:\s+test[/\\]lost.js\n$/.test(output))) {
+  if (!(/test[/\\]+lost\.js/.test(output))) {
     console.error(('Failed after ' + duration).red)
     process.exit(1)
   }
