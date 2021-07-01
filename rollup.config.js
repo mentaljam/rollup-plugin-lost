@@ -15,6 +15,7 @@ const config = formats.map(format => ({
     dir: 'dist',
     entryFileNames: '[name].[format].js',
     format,
+    exports: 'auto',
   },
   external,
   plugins: [

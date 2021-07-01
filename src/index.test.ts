@@ -10,9 +10,9 @@ let output = ''
 
 // eslint-disable-next-line @typescript-eslint/unbound-method
 process.stderr.write = ((
-  str: Uint8Array | string,
-  encoding?: string,
-  cb?: (err?: Error) => void,
+  str:       Uint8Array | string,
+  encoding?: BufferEncoding,
+  cb?:       (err?: Error) => void,
 ): boolean => {
   if (typeof str === 'string') {
     output += str
@@ -24,7 +24,7 @@ process.stderr.write = ((
 console.info('Running tests...'.cyan)
 const start = new Date().getTime()
 
-rollup({
+void rollup({
   input: 'test/index.js',
   plugins: [
     lost({
@@ -38,7 +38,7 @@ rollup({
     format: 'es',
   })
 }).then(() => {
-  const duration = (new Date().getTime() - start) + 'ms'
+  const duration = `${(new Date().getTime() - start)}ms`
   // eslint-disable-next-line @typescript-eslint/unbound-method
   process.stderr.write = originalStderrWrite
   if (!(/test[/\\]+lost\.js/.test(output))) {

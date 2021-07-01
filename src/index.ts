@@ -24,7 +24,7 @@ type RollupPluginLostFactory = (config?: IRollupPluginLostConfig) => Plugin
 const rollupPluginLost: RollupPluginLostFactory = ({
   exclude,
   include = 'src/**/*',
-}: IRollupPluginLostConfig = {}) => {
+} = {}) => {
   let inputdirs: string[]
   let used:      Set<string>
 
@@ -35,9 +35,9 @@ const rollupPluginLost: RollupPluginLostFactory = ({
       if (typeof input === 'string') {
         inputdirs = [path.dirname(input)]
       } else if (Array.isArray(input)) {
-        inputdirs = input.map(path.dirname)
+        inputdirs = input.map(i => path.dirname(i))
       } else if (input) {
-        inputdirs = Object.values(input).map(path.dirname)
+        inputdirs = Object.values(input).map(i => path.dirname(i))
       } else {
         inputdirs = []
       }
