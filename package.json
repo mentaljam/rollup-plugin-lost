@@ -1,6 +1,6 @@
 {
   "name": "rollup-plugin-lost",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Rollup plugin to list lost (unused) files in the project directory.",
   "homepage": "https://github.com/mentaljam/rollup-plugin-lost",
   "repository": {
